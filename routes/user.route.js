@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { catchError } from "../utils/catchError.js";
-import { bookAppontment, confrimAppointmet, creatBloodDonation, createBloodRequest, createHospital, createUser, getAllAppointmet, getAllAppointmetforuser, getAllBloodRequest, getAllhospital, getAllUser, getBloodDonation, getBloodDonationuserid, getBloodRequest, getUser, reScheduleAppointmet, updateBloodDonation, updateBloodRequest, updateUser, updatHospitalDoctors, updatUserToDoctor, updatUserToHospitaDoctor } from "../controllers/user.controller.js";
+import { bookAppontment, confrimAppointmet, creatBloodDonation, createBloodRequest, createHospital, createUser, creatLabRecord, getAllAppointmet, getAllAppointmetforuser, getAllBloodRequest, getAllhospital, getAllUser, getBloodDonation, getBloodDonationuserid, getBloodRequest, getLabRecord, getUser, reScheduleAppointmet, updateBloodDonation, updateBloodRequest, updateUser, updatHospitalDoctors, updatUserToDoctor, updatUserToHospitaDoctor } from "../controllers/user.controller.js";
 
 export const userRoute=Router();
 
@@ -26,6 +26,11 @@ userRoute.post('/create/blooddonation',catchError(creatBloodDonation));
 userRoute.post('/get/blooddonation',catchError(getBloodDonation));
 userRoute.post('/update/blooddonation',catchError(updateBloodDonation));
 userRoute.post('/get/userid/blooddonation',catchError(getBloodDonationuserid));
+userRoute.post('/get/labrecord',catchError(getLabRecord));
+userRoute.post('/create/labrecord',catchError(creatLabRecord));
+
+
+
 
 
 

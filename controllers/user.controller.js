@@ -6,6 +6,7 @@ import { Hospital } from "../modals/hospital.modal.js";
 import { Appointment } from "../modals/appointment.model.js";
 import { BloodRequest } from "../modals/Blood.request.modal.js";
 import { BloodDonate } from "../modals/Blood.donate.model.js";
+import { Lab } from "../modals/lab.model.js";
 
 export const createUser = async (req, res) => {
  
@@ -32,7 +33,7 @@ export const getUser=async (req, res) => {
     // console.log("Received email:", req.query.email);
     appAssert(email,FORBIDDEN,'Email is required...');
     const user = await User.findOne({ email });
-    appAssert(user,NOT_FOUND,"user is not found in db..");
+    // appAssert(user,NOT_FOUND,"user is not found in db..");
     res.status(OK).json({ user });
 }
 
@@ -272,3 +273,34 @@ export const creatBloodDonation=async(req,res)=>{
  
  
  }
+
+ export const creatLabRecord=async(req,res)=>{
+   console.log("khj")
+    const {userid,hospitalId}=req.body;
+    appAssert(
+        userid&&hospitalId,FORBIDDEN,"All fields are required"
+     
+    )
+    const lab=await Lab.create({
+        userid,
+        hospitalId
+    })
+    res.status(OK).json({lab});
+   
+ 
+ 
+ }
+ export const getLabRecord=async(req,res)=>{
+   
+    const {userid}=req.body;
+    appAssert(
+        userid,FORBIDDEN,"All fields are required"
+     
+    )
+   const lab=await Lab.find({userid}).populate('userid').populate('hospitalId');
+    res.status(OK).json({lab});
+   
+ 
+ 
+ }
+
