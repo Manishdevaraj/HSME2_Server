@@ -160,7 +160,7 @@ export const reScheduleAppointmet=async(req,res)=>
 export const confrimAppointmet=async(req,res)=>
             {
                 const {id}=req.body;
-                const appointment=await Appointment.findByIdAndUpdate(id,{Status:'confrim'});
+                const appointment=await Appointment.findByIdAndUpdate(id,{Status:' confirm'});
                 res.status(OK).json({appointment});
             }
 export const getAllAppointmetforuser=async(req,res)=>
